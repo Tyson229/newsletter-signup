@@ -5,8 +5,8 @@ const SuccessPage = ({ email }: { email: string | undefined }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex h-full w-full flex-col gap-32 bg-white px-6 py-12 md:aspect-square md:w-min md:h-min md:rounded-3xl md:gap-10 md:px-20 md:py-12">
-      <div className="flex grow flex-col justify-center gap-7 w-full">
+    <div className="flex h-full w-full flex-col gap-32 bg-white px-6 py-12 md:aspect-square md:h-min md:w-min md:gap-10 md:rounded-3xl md:px-20 md:py-12">
+      <div className="flex w-full grow flex-col justify-center gap-7">
         <img src={successLogo} className="w-1/5" />
         <div className="text-5xl font-bold">Thanks for subscribing!</div>
         <div>
