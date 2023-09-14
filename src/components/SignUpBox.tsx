@@ -1,47 +1,68 @@
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import BulletPoint from "./BulletPoint";
+import { useNavigate } from "react-router-dom";
 
 const SignUpBox = ({
-  setIsFormSubmitted,
   setSignUpEmail,
 }: {
-  setIsFormSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
   setSignUpEmail: React.Dispatch<React.SetStateAction<string | undefined>>;
 }) => {
   const emailInputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
+  const [isValid, setIsValid] = useState<boolean>(true);
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    console.log(emailInputRef.current?.value);
-    setIsFormSubmitted(() => true);
+    const emailInput = emailInputRef.current?.value;
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/g;
+    if (emailInput?.match(regex)) {
+      setIsValid(true);
+      setSignUpEmail(() => emailInput);
+      navigate("/success");
+    } else {
+      setIsValid(false);
+      emailInputRef.current?.focus();
+    }
     return;
   }
 
-
   return (
-    <div className="w-full h-full md:w-1/2 md:h-1/2 flex flex-col md:grid md:grid-cols-2 bg-white">
-      <img src="src/assets/illustration-sign-up-mobile.svg" className="" />
-      <div className="flex flex-col w-full font-sans px-6 py-12 grow gap-8">
-        <div className="font-bold text-4xl">Stay updated!</div>
-        <div>Join 60,000+ product managers receiving monthly updates on:</div>
-        <div className="grid place-items-start grow">
-          <BulletPoint content="Product discovery and building that matters" />
-          <BulletPoint content="Measuring to ensure updates are a success" />
-          <BulletPoint content="And much more!" />
+    <div className="grid h-full w-full grid-rows-3 bg-white md:h-fit md:w-4/6 md:flex md:flex-row-reverse md:rounded-3xl md:p-6 md:gap-10">
+      <div className="w-full bg-cover-mobile bg-cover bg-bottom md:bg-cover-desktop md:bg-center"></div>
+      <div className="box-border flex w-full flex-col gap-8 px-6 py-8 font-sans row-span-2 ">
+        <div className="grid w-full gap-6">
+          <div className="text-[2.5rem] font-bold">Stay updated!</div>
+          <div>Join 60,000+ product managers receiving monthly updates on:</div>
+          <div className="grid gap-3">
+            <BulletPoint content="Product discovery and building that matters" />
+            <BulletPoint content="Measuring to ensure updates are a success" />
+            <BulletPoint content="And much more!" />
+          </div>
         </div>
-        <form
-          className="flex flex-col grow justify-end gap-2"
-          onSubmit={handleSubmit}
-        >
-          <label className="font-bold text-xs">Email address</label>
-          <input
-            ref={emailInputRef}
-            type="email"
-            className="w-full p-4 border-2 border-gray-300 rounded-lg"
-            placeholder="email@company.com"
-          />
+        <form className="grid grow gap-2" onSubmit={handleSubmit}>
+          <div className="space-y-1.5">
+            <div className="flex justify-between">
+              <span className="text-xs font-bold">Email addressed</span>
+              <span
+                className={`${
+                  !isValid ? "text-xs font-bold	text-[#ff6257]" : "hidden"
+                }`}
+              >
+                Valid email required
+              </span>
+            </div>
+            <input
+              ref={emailInputRef}
+              className={`${
+                isValid
+                  ? "focus:outline-[#242742]"
+                  : "focus:bg-[#ff6257]/10 focus:outline-red-300"
+              } w-full rounded-lg border-2 border-gray-300 p-4`}
+              placeholder="email@company.com"
+            />
+          </div>
           <button
-            className="w-full p-4 mt-4 text-center text-white font-bold rounded-lg text-sm bg-[#242742]"
+            className="w-full rounded-lg bg-[#242742] p-4 text-center font-bold text-white transition duration-100 ease-in-out hover:bg-gradient-to-r hover:from-pink-500 hover:to-orange-500 hover:shadow-xl hover:shadow-red-300"
             type="submit"
           >
             Subscribe to monthly newsletter

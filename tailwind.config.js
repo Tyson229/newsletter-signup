@@ -4,11 +4,10 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'cover-desktop': "url('assets/illustration-sign-up-desktop.svg')",
-        'cover-mobile': "url('assets/illustration-sign-up-mobile.svg')",
+        "cover-desktop": "url('assets/illustration-sign-up-desktop.svg')",
+        "cover-mobile": "url('assets/illustration-sign-up-mobile.svg')",
       },
     },
   },
   plugins: [],
 };
-

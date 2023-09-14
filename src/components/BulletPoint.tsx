@@ -1,4 +1,4 @@
-const BulletPoint = ({content}: {content: string}) => {
+const BulletPoint = ({ content }: { content: string }) => {
   return (
     <div className="flex items-center gap-4">
       <img src="src/assets/icon-list.svg" />
