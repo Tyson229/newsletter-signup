@@ -8,7 +8,7 @@ const SignUpContainer = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<SignUpBox setSignUpEmail={setSignUpEmail} />} />
+      <Route path="/newsletter-signup" element={<SignUpBox setSignUpEmail={setSignUpEmail} />} />
 
       <Route path="/success" element={<SuccessPage email={signUpEmail} />} />
     </Routes>
