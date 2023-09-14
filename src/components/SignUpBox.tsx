@@ -18,7 +18,7 @@ const SignUpBox = ({
     if (emailInput?.match(regex)) {
       setIsValid(true);
       setSignUpEmail(() => emailInput);
-      navigate("/success");
+      navigate("success");
     } else {
       setIsValid(false);
       emailInputRef.current?.focus();

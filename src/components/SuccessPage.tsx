@@ -17,7 +17,7 @@ const SuccessPage = ({ email }: { email: string | undefined }) => {
       </div>
       <button
         className="w-full rounded-lg bg-[#242742] p-4 text-center font-bold text-white transition duration-100 ease-in-out hover:bg-gradient-to-r hover:from-pink-500 hover:to-orange-500 hover:shadow-xl hover:shadow-red-300"
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/newsletter-signup")}
       >
         Dismiss message
       </button>

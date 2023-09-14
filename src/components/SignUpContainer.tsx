@@ -8,9 +8,12 @@ const SignUpContainer = () => {
 
   return (
     <Routes>
-      <Route path="/newsletter-signup" element={<SignUpBox setSignUpEmail={setSignUpEmail} />} />
-
-      <Route path="/success" element={<SuccessPage email={signUpEmail} />} />
+      <Route 
+        path="/newsletter-signup"
+      >
+        <Route index element={<SignUpBox setSignUpEmail={setSignUpEmail}/>} />
+        <Route path="success" element={<SuccessPage email={signUpEmail} />} />
+      </Route>
     </Routes>
   );
 };
