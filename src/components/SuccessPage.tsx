@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import successLogo from "../assets/icon-success.svg"
 
 const SuccessPage = ({ email }: { email: string | undefined }) => {
   const navigate = useNavigate();
@@ -6,7 +7,7 @@ const SuccessPage = ({ email }: { email: string | undefined }) => {
   return (
     <div className="flex h-full w-full flex-col gap-32 bg-white px-6 py-12 md:aspect-square md:w-min md:h-min md:rounded-3xl md:gap-10 md:px-20 md:py-12">
       <div className="flex grow flex-col justify-center gap-7 w-full">
-        <img src="src/assets/icon-success.svg" className="w-1/5" />
+        <img src={successLogo} className="w-1/5" />
         <div className="text-5xl font-bold">Thanks for subscribing!</div>
         <div>
           A confirmation email has been sent to{" "}
