@@ -1,7 +1,7 @@
 import { FormEvent, useRef, useState } from "react";
 import BulletPoint from "./BulletPoint";
 import { useNavigate } from "react-router-dom";
-
+import { motion } from "framer-motion";
 const SignUpBox = ({
   setSignUpEmail,
 }: {
@@ -27,9 +27,13 @@ const SignUpBox = ({
   }
 
   return (
-    <div className="grid h-full w-full grid-rows-3 bg-white md:h-fit md:w-4/6 md:flex md:flex-row-reverse md:rounded-3xl md:p-6 md:gap-10">
+    <motion.div
+      animate={{ scale: 1 }}
+      whileInView={{ opacity: 1 }}
+      className="grid h-full w-full grid-rows-3 bg-white md:flex md:h-fit md:w-4/6 md:flex-row-reverse md:gap-10 md:rounded-3xl md:p-6"
+    >
       <div className="w-full bg-cover-mobile bg-cover bg-bottom md:bg-cover-desktop md:bg-center"></div>
-      <div className="box-border flex w-full flex-col gap-8 px-6 py-8 font-sans row-span-2 ">
+      <div className="row-span-2 box-border flex w-full flex-col gap-8 px-6 py-8 font-sans ">
         <div className="grid w-full gap-6">
           <div className="text-[2.5rem] font-bold">Stay updated!</div>
           <div>Join 60,000+ product managers receiving monthly updates on:</div>
@@ -69,7 +73,7 @@ const SignUpBox = ({
           </button>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import successLogo from "../assets/icon-success.svg"
-
+import successLogo from "../assets/icon-success.svg";
+import { animate, motion } from "framer-motion";
 const SuccessPage = ({ email }: { email: string | undefined }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex h-full w-full flex-col gap-32 bg-white px-6 py-12 md:aspect-square md:h-min md:w-min md:gap-10 md:rounded-3xl md:px-20 md:py-12">
+    <motion.div
+      initial={{ y: 150 }}
+      animate={{ y: 0 }}
+      className="flex h-full w-full flex-col gap-32 bg-white px-6 py-12 md:aspect-square md:h-min md:w-min md:gap-10 md:rounded-3xl md:px-20 md:py-12"
+    >
       <div className="flex w-full grow flex-col justify-center gap-7">
         <img src={successLogo} className="w-1/5" />
         <div className="text-5xl font-bold">Thanks for subscribing!</div>
@@ -21,7 +25,7 @@ const SuccessPage = ({ email }: { email: string | undefined }) => {
       >
         Dismiss message
       </button>
-    </div>
+    </motion.div>
   );
 };
 
